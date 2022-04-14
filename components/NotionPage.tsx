@@ -38,7 +38,6 @@ import { Footer } from './Footer'
 import { PageSocial } from './PageSocial'
 const ReactGiscus = dynamic(() => import('./ReactGiscus'))
 import { NotionPageHeader } from './NotionPageHeader'
-import { GitHubShareButton } from './GitHubShareButton'
 import { HeroHeader } from './HeroHeader'
 
 import styles from './styles.module.css'
@@ -333,7 +332,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
         pageCover={pageCover}
       />
 
-      <GitHubShareButton />
     </>
   )
 }
