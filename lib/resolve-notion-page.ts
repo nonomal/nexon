@@ -1,11 +1,11 @@
-import { parsePageId } from 'notion-utils'
 import { ExtendedRecordMap } from 'notion-types'
+import { parsePageId } from 'notion-utils'
 
 import * as acl from './acl'
-import { pageUrlOverrides, pageUrlAdditions, environment, site } from './config'
+import { environment, pageUrlAdditions, pageUrlOverrides, site } from './config'
 import { db } from './db'
-import { getPage } from './notion'
 import { getSiteMap } from './get-site-map'
+import { getPage } from './notion'
 
 export async function resolveNotionPage(domain: string, rawPageId?: string) {
   let pageId: string
@@ -49,7 +49,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
       // handle mapping of user-friendly canonical page paths to Notion page IDs
       // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
       const siteMap = await getSiteMap()
-      pageId = siteMap?.canonicalPageMap[rawPageId].pageId
+      pageId = siteMap?.canonicalPageMap[rawPageId]?.pageId
 
       if (pageId) {
         // TODO: we're not re-using the page recordMap from siteMaps because it is

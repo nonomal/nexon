@@ -1,16 +1,18 @@
 import * as React from 'react'
-import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
-import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
+
+import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub'
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin'
+import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon'
 import { FaRss } from '@react-icons/all-files/fa/FaRss'
-import { FaEnvelopeOpenText } from '@react-icons/all-files/fa/FaEnvelopeOpenText'
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter'
 import { FaYoutube } from '@react-icons/all-files/fa/FaYoutube'
-import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
+import { FaZhihu } from '@react-icons/all-files/fa/FaZhihu'
 import { IoMoonSharp } from '@react-icons/all-files/io5/IoMoonSharp'
+import { IoSunnyOutline } from '@react-icons/all-files/io5/IoSunnyOutline'
 
-import { useDarkMode } from 'lib/use-dark-mode'
-import * as config from 'lib/config'
+import * as config from '@/lib/config'
+import { useDarkMode } from '@/lib/use-dark-mode'
 
 import styles from './styles.module.css'
 
@@ -36,7 +38,9 @@ export const FooterImpl: React.FC = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.copyright}>Copyright {year} {config.author}</div>
+      <div className={styles.copyright}>
+        Copyright {year} {config.author}
+      </div>
 
       <div className={styles.settings}>
         {hasMounted && (
@@ -55,7 +59,7 @@ export const FooterImpl: React.FC = () => {
       <div className={styles.social}>
         <a
           className={styles.rss}
-          href="/feed.xml"
+          href='/feed.xml'
           target='_blank'
           rel='noopener noreferrer'
         >
@@ -70,6 +74,17 @@ export const FooterImpl: React.FC = () => {
             rel='noopener noreferrer'
           >
             <FaTwitter />
+          </a>
+        )}
+
+        {config.mastodon && (
+          <a
+            className={styles.mastodon}
+            href={config.mastodon}
+            title={`Mastodon ${config.getMastodonHandle()}`}
+            rel='me'
+          >
+            <FaMastodon />
           </a>
         )}
 

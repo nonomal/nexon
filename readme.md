@@ -1,25 +1,24 @@
-
 <p align="center">
   <a href="https://nexon-demo.vercel.app/">
     <img alt="Example article page" src="https://s2.loli.net/2022/04/10/2lCV7ijT9J8yWGm.png" width="689">
   </a>
 </p>
 
-Nexon is a modified version of [Starter Kit][StartKit] with a special focus on better blogging experience.
+Nexon is a modified version of [Starter Kit][startkit] with a special focus on better blogging experience.
 
 The Goals of Nexon:
-- Be compatible with latest [Starter Kit][StartKit].
+
+- Be compatible with latest [Starter Kit][startkit].
 - Make sure users can seamlessly migrate from Starter Kit to Nexon.
-- Add custom features (to bring a better blogging experience) that may not be suitable to merge into [Starter Kit][StartKit].
+- Add custom features (to bring a better blogging experience) that may not be suitable to merge into [Starter Kit][startkit].
 
 More information is available on [wiki](https://github.com/fky2015/nexon/wiki).
 
+(Down below is the [Starter Kit's readme][startkit]. I'm leaving it as is. All credit goes to [@transitive-bullshit](https://github.com/transitive-bullshit/))
 
-(Down below is the [Starter Kit's readme][StartKit]. I'm leaving it as is. All credit goes to [@transitive-bullshit](https://github.com/transitive-bullshit/))
+**You are also encouraged to use the [Starter Kit][startkit]. It's a well-developed project!**
 
-**You are also encouraged to use the [Starter Kit][StartKit]. It's a well-developed project!** 
-
-[StartKit]: https://github.com/transitive-bullshit/nextjs-notion-starter-kit
+[startkit]: https://github.com/transitive-bullshit/nextjs-notion-starter-kit
 
 ---
 
@@ -65,7 +64,7 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 
 **All config is defined in [site.config.ts](./site.config.ts).**
 
-This project requires a recent version of Node.js (>= 14.17).
+This project requires a recent version of Node.js (we recommend >= 16).
 
 1. Fork / clone this repo
 2. Change a few values in [site.config.ts](./site.config.ts)
@@ -154,7 +153,7 @@ Dark mode is fully supported and can be toggled via the sun / moon icon in the f
 
 All Open Graph and social meta tags are generated from your Notion content, which makes social sharing look professional by default.
 
-Social images are generated automatically using headless chrome. You can tweak the default React template for social images by editing [api/social-images.tsx](./pages/api/social-image.tsx).
+Social images are generated automatically using [Vercel OG Image Generation](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation). You can tweak the default React template for social images by editing [api/social-images.tsx](./pages/api/social-image.tsx).
 
 You can view an example social image live in production [here](https://transitivebullsh.it/api/social-image?id=dfc7f709-ae3e-42c6-9292-f6543d5586f0).
 

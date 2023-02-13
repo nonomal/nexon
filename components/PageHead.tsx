@@ -1,9 +1,16 @@
-import Head from 'next/head'
 import * as React from 'react'
+import Head from 'next/head'
 
-import * as types from 'lib/types'
-import * as config from 'lib/config'
-import { getSocialImageUrl } from 'lib/get-social-image-url'
+import resolveConfig from 'tailwindcss/resolveConfig'
+
+import * as config from '@/lib/config'
+import * as types from '@/lib/types'
+import { getSocialImageUrl } from '@/lib/get-social-image-url'
+import { useDarkMode } from '@/lib/use-dark-mode'
+
+import tailwindConfig from '../tailwind.config.js'
+
+const fullConfig = resolveConfig(tailwindConfig)
 
 export const PageHead: React.FC<
   types.PageProps & {
@@ -13,12 +20,17 @@ export const PageHead: React.FC<
     url?: string
   }
 > = ({ site, title, description, pageId, image, url }) => {
-  const rssFeedUrl = `${config.host}/feed`
+  const rssFeedUrl = `${config.host}/feed.xml`
 
   title = title ?? site?.name
   description = description ?? site?.description
 
   const socialImageUrl = getSocialImageUrl(pageId) || image
+  const { isDarkMode } = useDarkMode()
+
+  const themeColor = isDarkMode
+    ? fullConfig.theme.colors['black']
+    : fullConfig.theme.colors['white']
 
   return (
     <Head>
@@ -29,10 +41,6 @@ export const PageHead: React.FC<
         content='width=device-width, initial-scale=1, shrink-to-fit=no'
       />
 
-      <link
-        href='https://fonts.googleapis.com/css2?family=Fira+Code&family=Noto+Sans+SC:wght@400;700&family=Roboto+Slab:wght@400;700&display=swap'
-        rel='stylesheet'
-      />
       <meta name='robots' content='index,follow' />
       <meta property='og:type' content='website' />
 
@@ -82,6 +90,8 @@ export const PageHead: React.FC<
 
       <meta property='og:title' content={title} />
       <meta name='twitter:title' content={title} />
+      <meta name='theme-color' content={themeColor} />
+
       <title>{title}</title>
     </Head>
   )

@@ -48,7 +48,7 @@ export interface SiteMap {
 }
 
 export interface CanonicalPageMap {
-  [canonicalPageId: string]: CanonicalPageData;
+  [canonicalPageId: string]: CanonicalPageData
 }
 
 // All metadata (Notion Properties) goes here.
@@ -57,6 +57,8 @@ export interface CanonicalPageData {
   lastEditedTime: Date
   createdTime: Date
   title: string
+  // Indicate a draft if set to `false`.
+  publicPage: boolean
 }
 
 export interface PageUrlOverridesMap {
@@ -69,4 +71,14 @@ export interface PageUrlOverridesInverseMap {
   // maps from a notion page id to the URL path the page should be resolved to
   // (this overrides the built-in URL path generation for these pages)
   [pageId: string]: string
+}
+
+export interface NotionPageInfo {
+  pageId: string
+  title: string
+  image: string
+  imageObjectPosition: string
+  author: string
+  authorImage: string
+  detail: string
 }
